@@ -1,0 +1,26 @@
+<apex:page sidebar="False" controller="CustomerCtr">
+    <B><center>!! Welcome to EDU Bank - Customer Management !!
+    </center></B>
+    <br/>
+    <apex:form >
+    	<apex:pageBlock title="Add new customer">
+            <apex:pageBlockSection title="Customer Details">
+            	<apex:inputField value="{!customerRecord.Name}" label="Name"/>
+                <apex:inputField value="{!customerRecord.Customer__c}" label="Account Number"/>
+                <apex:inputField value="{!customerRecord.Phone__c}" label="Phone"/>
+                <apex:inputField value="{!customerRecord.Email__c}" label="Email"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons >
+            	<apex:commandButton value="Create" action="{!createCustomer}"/>
+         </apex:pageBlockButtons>	
+        </apex:pageBlock>
+        <apex:pageBlock title="List of Customers">
+        	<apex:pageBlockTable value="{!customerRecords}" var="cust">
+            <apex:column value="{!cust.Name}"/>
+            <apex:column value="{!cust.Customer__c}"/>
+            <apex:column value="{!cust.Phone__c}"/>
+            <apex:column value="{!cust.Email__c}"/>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

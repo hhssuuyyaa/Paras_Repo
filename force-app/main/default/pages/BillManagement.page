@@ -1,0 +1,45 @@
+<!-- 
+	Visualforce Page is a tag based Language
+	Tags can have attributes
+-->
+<apex:page sidebar="false" controller="BillManagementCtr">
+	<center>
+    	WELCOME TO BILL MANAGEMENT!
+    </center>
+    <br/>
+    <apex:pageMessages />
+    <apex:form >
+    	<apex:pageBlock title="Create a new Bill">
+            <apex:pageBlockSection title="Bill Details" collapsible="false">
+                <apex:inputField value="{!billRecord.Customer__c}" label="Customer"/>
+                <apex:inputField value="{!billRecord.Credit_Card__c}" label="Credit Card"/>
+                <apex:inputField value="{!billRecord.Start_Date__c}" label="Start Date"/>
+                <apex:inputField value="{!billRecord.End_Date__c}" label="End Date"/>
+                <apex:inputField value="{!billRecord.Due_Date__c}" label="Due Date"/>
+                <apex:inputField value="{!billRecord.Amount_Swiped__c}" label="Amount Swiped"/>
+                <apex:inputField value="{!billRecord.Cash_Withdrawl__c}" label="Cash Withdrawn "/>
+                <apex:inputField value="{!billRecord.Credit_Card_Number__c}" label="Credit Card Number"/>
+                <!--<apex:inputField value="{!billRecord.Total_Transactions__c}" label="Total Transactions"/>-->
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons >
+            	<apex:commandButton value="Create" action="{!createBill}"/>
+            </apex:pageBlockButtons>
+    	</apex:pageBlock>
+        <apex:pageBlock title="List of Bills">
+        	<apex:pageBlockTable value="{!billRecords}" var="bill">
+                <apex:column value="{!bill.Name}" headerValue="Bill Number / Name"/>
+                <apex:column value="{!bill.Customer__c}"/>
+                <apex:column value="{!bill.Credit_Card__c}"/>
+                <apex:column value="{!bill.Start_Date__c}"/>
+                <apex:column value="{!bill.End_Date__c}"/>
+                <apex:column value="{!bill.Due_Date__c}"/>
+                <apex:column value="{!bill.Amount_Swiped__c}"/>
+                <apex:column value="{!bill.Cash_Withdrawl__c}"/>
+                <apex:column value="{!bill.Credit_Card_Number__c}"/>
+                <apex:column value="{!bill.Total_Transactions__c}"/>
+                <apex:column value="{!bill.Total_Amount__c}"/>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+    
+</apex:page>

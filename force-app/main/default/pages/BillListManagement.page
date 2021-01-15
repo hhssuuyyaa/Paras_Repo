@@ -1,0 +1,66 @@
+<apex:page sidebar="false" controller="BillListManagementCtr">
+	<center>
+    	WELCOME TO BILL LIST MANAGEMENT!
+    </center>
+    <br/>
+    <apex:pageMessages />
+    <apex:form >
+        <apex:pageBlock title="List of Bills" rendered="{!readOnlyMode}">
+            Search by Bill Number: &nbsp; <apex:inputText value="{!searchText}"/> &nbsp;
+            <apex:commandButton action="{!getBills}" value="Search"/> &nbsp;
+            <apex:commandButton action="{!editMode}" value="Edit Records"/> &nbsp;
+            <apex:commandButton action="{!deleteBills}" value="Delete Records"/>
+            <br/><br/>
+        	<apex:pageBlockTable value="{!billWrapperList}" var="rec">
+                <apex:column headerValue="Select">
+                	<apex:inputCheckbox value="{!rec.selct}"/>
+                </apex:column>
+                <apex:column value="{!rec.bill.Name}" headerValue="Bill Number / Name"/>
+                <apex:column value="{!rec.bill.Customer__c}"/>
+                <apex:column value="{!rec.bill.Credit_Card__c}"/>
+                <apex:column value="{!rec.bill.Start_Date__c}"/>
+                <apex:column value="{!rec.bill.End_Date__c}"/>
+                <apex:column value="{!rec.bill.Due_Date__c}"/>
+                <apex:column value="{!rec.bill.Amount_Swiped__c}"/>
+                <apex:column value="{!rec.bill.Cash_Withdrawl__c}"/>
+                <apex:column value="{!rec.bill.Credit_Card_Number__c}"/>
+                <apex:column value="{!rec.bill.Total_Transactions__c}"/>
+                <apex:column value="{!rec.bill.Total_Amount__c}"/>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+        <apex:pageBlock title="Update Records" rendered="{!editOnlyMode}">
+            <apex:commandButton action="{!readMode}" value="Cancel"/> &nbsp;
+            <apex:commandButton value="Update" action="{!updateBills}"/> <br/><br/>
+        	<apex:pageBlockTable value="{!billRecords}" var="bill">
+            	<apex:column value="{!bill.Name}" headerValue="Bill Number / Name"/>
+                <apex:column headerValue="Customer">
+                    <apex:inputField value="{!bill.Customer__c}"/>
+                </apex:column>
+                <apex:column headerValue="Credit Card">
+                    <apex:inputField value="{!bill.Credit_Card__c}"/>
+                </apex:column>
+                <apex:column headerValue="Start Date">
+                    <apex:inputField value="{!bill.Start_Date__c}"/>
+                </apex:column>
+                <apex:column headerValue="End Date">
+                    <apex:inputField value="{!bill.End_Date__c}"/>
+                </apex:column>
+                <apex:column value="{!bill.Due_Date__c}"/>
+                <apex:column headerValue="Amount Swiped">
+                    <apex:inputField value="{!bill.Amount_Swiped__c}"/>
+                </apex:column>
+                <apex:column headerValue="Cash Withdrawn">
+                    <apex:inputField value="{!bill.Cash_Withdrawl__c}"/>
+                </apex:column>
+                <apex:column headerValue="Cash Withdrawn">
+                    <apex:inputField value="{!bill.Credit_Card_Number__c}"/>
+                </apex:column>
+                <apex:column headerValue="Cash Withdrawn">
+                    <apex:inputField value="{!bill.Total_Transactions__c}"/>
+                </apex:column>
+                <apex:column value="{!bill.Total_Amount__c}"/>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+    
+</apex:page>
